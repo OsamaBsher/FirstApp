@@ -1,2 +1,0 @@
-# FirstApp
-My First App
