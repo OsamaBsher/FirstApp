@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons';
 const InboxScreen = () => {
     return (
         <SafeAreaView>
-            <Text style={styles.header}> WELCOME </Text>
+            <Text style={styles.header}> البريد </Text>
         </SafeAreaView>
     );
 }

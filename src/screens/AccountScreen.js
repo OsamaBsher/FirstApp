@@ -5,17 +5,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const AccountScreen = () => {
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <Text style={styles.header}> السلام عليكم </Text>
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-    // container: { style={styles.container}
-    //     backgroundColor: '#F8F8F8',
-    //     flex: 1,
-    // },
+    container: { 
+        borderColor: 'red',
+        borderWidth: 10,
+        flex: 1,
+    },
     header: {
         fontSize: 20,
     }

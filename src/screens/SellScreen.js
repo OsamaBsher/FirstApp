@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 });
 
 SellScreen.navigationOptions = {
-    title: 'ضف اعلان',
+    title: 'أضف اعلان',
     tabBarIcon: <FontAwesome5 name="plus-square" size={24} color="black" />,
   };
 
