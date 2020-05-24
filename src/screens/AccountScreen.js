@@ -6,25 +6,38 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 const AccountScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.header}> السلام عليكم </Text>
+            <View style={styles.header}>
+                <Text style={styles.headerText}> الاعدادات</Text>
+            </View>
+            <View style={styles.bottomBox}>
+            </View>
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: { 
-        borderColor: 'red',
-        borderWidth: 10,
         flex: 1,
     },
     header: {
-        fontSize: 20,
-    }
+        height: 70,
+        flexDirection: 'row',
+        alignItems: "center",
+        justifyContent: 'center',
+    },
+    headerText: {
+        fontSize: 35,
+        fontWeight: '700',
+    },
+    bottomBox: {
+        flex: 1,
+        backgroundColor: '#F0EEEE'
+    },
 });
 
 AccountScreen.navigationOptions = {
-    title: 'حسابي',
-    tabBarIcon: <MaterialCommunityIcons name="account-outline" size={30} color="black" />,
+    title: 'الاعدادات',
+    tabBarIcon: <MaterialCommunityIcons name="settings-outline" size={30} color="black" />,
   };
 
 export default AccountScreen;

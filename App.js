@@ -17,6 +17,9 @@ const navigator = createBottomTabNavigator(
     Sell: SellScreen,
     Inbox: InboxScreen,
     Browse: BrowseScreen,
+  },
+  {
+    initialRouteName: "Browse"
   }
 );
 

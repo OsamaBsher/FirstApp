@@ -11,7 +11,6 @@ const SearchBar = () => {
         <View style={styles.container}>
             <TouchableOpacity 
                 style={styles.selector}
-                title="lol"
                 onPress={() => {
                     if(choice) setChoice(0)
                     else setChoice(1)

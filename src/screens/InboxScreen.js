@@ -1,20 +1,41 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
+import AskLogin from '../components/AskLogin';
+
 
 const InboxScreen = () => {
     return (
-        <SafeAreaView>
-            <Text style={styles.header}> البريد </Text>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.headerText}> البريد</Text>
+            </View>
+            <View style={styles.bottomBox}>
+                <AskLogin value="لاستعمال البريد"/>
+            </View>
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    container: { 
+        flex: 1,
+    },
     header: {
-        fontSize: 20
-    }
+        height: 70,
+        flexDirection: 'row',
+        alignItems: "center",
+        justifyContent: 'center',
+    },
+    headerText: {
+        fontSize: 35,
+        fontWeight: '700',
+    },
+    bottomBox: {
+        flex: 1,
+        backgroundColor: '#F0EEEE'
+    },
 });
 
 InboxScreen.navigationOptions = {

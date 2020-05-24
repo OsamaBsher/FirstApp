@@ -1,23 +1,36 @@
-import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
-import SearchBar from '../components/SearchBar'
+import SearchBar from '../components/SearchBar';
+import Nothing from '../components/Nothing';
+import AskLogin from '../components/AskLogin';
 
 const BrowseScreen = () => {
+
+    const [choice, setChoice] = useState(true)
 
     return (
         <SafeAreaView style={styles.container}>
             <SearchBar />
             <View style={styles.mainbox}>
-                <View style={styles.boxes}>
-                    <Text style={styles.text}>البحوث السابقة</Text>
-                </View>
-                <View style={styles.boxes}>
-                    <Text style={styles.text}>العروض البارزة</Text>              
-                </View>
+                <TouchableOpacity 
+                    style={choice ? styles.boxes : styles.boxes2}
+                    disabled={!choice}
+                    onPress={() => {setChoice(false)}}
+                >
+                    <Text style={choice ? styles.text : styles.text2}>البحوث المحفوظة</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={!choice ? styles.boxes : styles.boxes2}
+                    disabled={choice}
+                    onPress={() => {setChoice(true)}}
+                >
+                    <Text style={!choice ? styles.text : styles.text2}>البحوث السابقة</Text>  
+                </TouchableOpacity>            
             </View>
             <View style={styles.bottomBox}>
+                {choice ? <Nothing /> : <AskLogin value="لاستعمال المحفوظات" />}
             </View>
         </SafeAreaView>
     );
@@ -31,21 +44,34 @@ const styles = StyleSheet.create({
         flex: 1,
         textAlign: 'center',
         fontSize: 22,
+        fontWeight: '600',
+    },
+    text2: {
+        flex: 1,
+        textAlign: 'center',
+        fontSize: 22,
         fontWeight: '700',
-        marginBottom: 10,
+    },
+    boxes2: {
+        borderBottomWidth: 2,
+        width: 200,
+        alignItems: 'center',
+        flexDirection: 'row'
     },
     mainbox:{
         height: 45,
         flexDirection: 'row',
+        justifyContent: 'space-evenly'
     },
     bottomBox: {
         flex: 1,
         backgroundColor: '#F0EEEE'
     },
     boxes: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'flex-end'
+        // borderBottomWidth: 2,
+        width: 200,
+        alignItems: 'center',
+        flexDirection: 'row'
     }
 });
 
