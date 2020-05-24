@@ -1,19 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-export default function App() {
+import BrowseScreen from './src/screens/BrowseScreen';
+import AccountScreen from './src/screens/AccountScreen';
+import InboxScreen from './src/screens/InboxScreen';
+import SavedScreen from './src/screens/SavedScreen';
+import SellScreen from './src/screens/SellScreen';
+
+const navigator = createBottomTabNavigator(
+  {
+    Account: AccountScreen,
+    Saved: SavedScreen,
+    Sell: SellScreen,
+    Inbox: InboxScreen,
+    Browse: BrowseScreen,
+  }
+);
+
+const App = createAppContainer(navigator);
+
+export default () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <SafeAreaProvider>
+      <App />
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
