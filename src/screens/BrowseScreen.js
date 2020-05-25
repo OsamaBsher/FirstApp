@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Feather } from '@expo/vector-icons';
 import SearchBar from '../components/SearchBar';
 import Nothing from '../components/Nothing';
 import AskLogin from '../components/AskLogin';
 
-const BrowseScreen = () => {
+const BrowseScreen = ( {navigation} ) => {
 
     const [choice, setChoice] = useState(true)
 
     return (
         <SafeAreaView style={styles.container}>
-            <SearchBar />
+            <SearchBar navigation={navigation}/>
             <View style={styles.mainbox}>
                 <TouchableOpacity 
                     style={choice ? styles.boxes : styles.boxes2}
@@ -76,8 +75,7 @@ const styles = StyleSheet.create({
 });
 
 BrowseScreen.navigationOptions = {
-    title: 'تصفح',
-    tabBarIcon: <Feather name="search" size={24} color="black" />,
+    headerShown: false
   };
 
 export default BrowseScreen;

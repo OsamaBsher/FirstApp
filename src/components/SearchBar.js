@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet, TextInput, Text, TouchableOpacity} from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-const SearchBar = () => {
+const SearchBar = ({navigation}) => {
     
     const [search, setSearch] = useState('');
     const [choice, setChoice] = useState(1)
@@ -18,13 +18,20 @@ const SearchBar = () => {
             >
             {choice ? <Text style={styles.text} >للبيع</Text> : <Text style={styles.text}>للايجار</Text>}
             </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.touch}
+                onPress={() => {
+                    navigation.navigate('Search', choice);
+                }}
+            >
             <Feather name="search" style={styles.icon}/>
-            <TextInput 
+            {/* <TextInput 
                 style={styles.search}
                 placeholder="ابحث"
                 onChangeText={(search) => setSearch(search)}
                 value={search}
-            />
+            /> */}
+            </TouchableOpacity>
         </View>
     );
 }
@@ -32,7 +39,7 @@ const SearchBar = () => {
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: '#F0EEEE',
+        borderColor: '#DCDCDC',
         borderRadius: 40,
         margin: 15,
         borderWidth: 2,
@@ -44,8 +51,12 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 18,
         margin: 5,
-        fontWeight: '600'
+        fontWeight: '600',
     },
+    touch: {
+        flex: 1,
+        flexDirection: 'row'
+    },  
     icon: {
         fontSize: 30,
         alignSelf: 'center',
