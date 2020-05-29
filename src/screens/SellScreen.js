@@ -4,14 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FontAwesome5 } from '@expo/vector-icons';
 import AskLogin from '../components/AskLogin';
 
-const SellScreen = () => {
+const SellScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.headerText}> انشر اعلان</Text>
             </View>
             <View style={styles.bottomBox}>
-                <AskLogin value="لنشر اعلان"/>
+                <AskLogin value="لنشر اعلان" navigation={navigation}/>
             </View>
         </SafeAreaView>
     );

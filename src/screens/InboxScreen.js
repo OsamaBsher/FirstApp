@@ -5,14 +5,14 @@ import { Feather } from '@expo/vector-icons';
 import AskLogin from '../components/AskLogin';
 
 
-const InboxScreen = () => {
+const InboxScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.headerText}> البريد</Text>
             </View>
             <View style={styles.bottomBox}>
-                <AskLogin value="لاستعمال البريد"/>
+                <AskLogin value="لاستعمال البريد" navigation={navigation}/>
             </View>
         </SafeAreaView>
     );

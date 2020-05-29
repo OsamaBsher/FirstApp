@@ -29,7 +29,7 @@ const BrowseScreen = ( {navigation} ) => {
                 </TouchableOpacity>            
             </View>
             <View style={styles.bottomBox}>
-                {choice ? <Nothing /> : <AskLogin value="لاستعمال المحفوظات" />}
+                {choice ? <Nothing /> : <AskLogin value="لاستعمال المحفوظات" navigation={navigation}/>}
             </View>
         </SafeAreaView>
     );
@@ -38,6 +38,7 @@ const BrowseScreen = ( {navigation} ) => {
 const styles = StyleSheet.create({
     container: { 
         flex: 1,
+        backgroundColor: 'white'
     },
     text: {
         flex: 1,

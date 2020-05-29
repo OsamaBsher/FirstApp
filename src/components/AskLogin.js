@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-const AskLogin = ({value}) => {
+const AskLogin = ({value, navigation}) => {
 
     return (
         <View style={styles.container}>
@@ -9,7 +9,7 @@ const AskLogin = ({value}) => {
                 <Text style={styles.text} >قم بتسجيل الدخول {value}</Text>
                 <TouchableOpacity
                 style={styles.btn}
-
+                onPress={() => {navigation.navigate('Log')}}
                 >
                     <Text style={styles.text2}>تسجيل الدخول</Text>
                 </TouchableOpacity>

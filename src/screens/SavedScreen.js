@@ -6,7 +6,7 @@ import AskLogin from '../components/AskLogin';
 import Nothing from '../components/Nothing';
 
 
-const SavedScreen = () => {
+const SavedScreen = ({navigation}) => {
 
     const [choice, setChoice] = useState(true)
     return (
@@ -31,7 +31,7 @@ const SavedScreen = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.bottomBox}>
-                {choice ? <Nothing /> : <AskLogin value="لاستعمال المحفوظات" />}
+                {choice ? <Nothing /> : <AskLogin value="لاستعمال المحفوظات" navigation={navigation}/>}
             </View>
         </SafeAreaView>
     );

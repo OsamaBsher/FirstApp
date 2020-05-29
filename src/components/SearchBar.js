@@ -39,7 +39,7 @@ const SearchBar = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: '#DCDCDC',
+        borderColor: '#F0F0F0',
         borderRadius: 40,
         margin: 15,
         borderWidth: 2,
