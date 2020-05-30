@@ -21,7 +21,7 @@ const SearchBar = ({navigation}) => {
             <TouchableOpacity
                 style={styles.touch}
                 onPress={() => {
-                    navigation.navigate('Search', choice);
+                    navigation.navigate('Search', {choice: choice});
                 }}
             >
             <Feather name="search" style={styles.icon}/>

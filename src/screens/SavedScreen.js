@@ -72,7 +72,9 @@ const styles = StyleSheet.create({
     mainbox:{
         height: 45,
         flexDirection: 'row',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        borderBottomWidth: 1,
+        borderBottomColor: 'lightgrey'
     },
     bottomBox: {
         flex: 1,

@@ -12,38 +12,27 @@ import SellScreen from './src/screens/SellScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import LogScreen from './src/screens/LogScreen';
 
-import { Feather } from '@expo/vector-icons';
-
-const SearchFlow = createStackNavigator({
-  Browse: BrowseScreen,
-  Search: SearchScreen,
-})
-
-SearchFlow.navigationOptions = {
-  title: 'تصفح',
-  tabBarIcon: <Feather name="search" size={24} color="black" />,
-};
-
 const navigator = createBottomTabNavigator(
   {
     Account: AccountScreen,
     Saved: SavedScreen,
     Sell: SellScreen,
     Inbox: InboxScreen,
-    SearchFlow
+    Browse: BrowseScreen,
   },
   {
-    initialRouteName: "SearchFlow"
+    initialRouteName: "Browse"
   }
 );
 
 navigator.navigationOptions = {
-  headerShown: false
+  headerShown: false,
 }
 
 const stack = createStackNavigator({
   navigator,
-  Log: LogScreen
+  Log: LogScreen,
+  Search: SearchScreen,
 })
 
 

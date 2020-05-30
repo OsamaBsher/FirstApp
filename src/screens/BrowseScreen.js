@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import SearchBar from '../components/SearchBar';
 import Nothing from '../components/Nothing';
 import AskLogin from '../components/AskLogin';
+import { Feather } from '@expo/vector-icons';
 
 const BrowseScreen = ( {navigation} ) => {
 
@@ -61,7 +62,9 @@ const styles = StyleSheet.create({
     mainbox:{
         height: 45,
         flexDirection: 'row',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        borderBottomWidth: 1,
+        borderBottomColor: 'lightgrey'
     },
     bottomBox: {
         flex: 1,
@@ -76,7 +79,10 @@ const styles = StyleSheet.create({
 });
 
 BrowseScreen.navigationOptions = {
-    headerShown: false
+    headerShown: false,
+    title: 'تصفح',
+    tabBarIcon: <Feather name="search" size={24} color="black" />,
   };
+  
 
 export default BrowseScreen;

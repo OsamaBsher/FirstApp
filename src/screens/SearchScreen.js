@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, StyleSheet, Text, TextInput, FlatList, TouchableOpacity} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
@@ -6,6 +6,14 @@ import { Entypo } from '@expo/vector-icons';
 
 const SearchScreen = ({navigation}) => {
     const [search, setSearch] = useState('');
+    const [focus, setFocus] = useState(null);
+
+    // const  choice  = choice;
+    const {choice} = navigation.state.params;
+
+    useEffect(() => {
+        if (focus) focus.focus();
+    }, [focus])
 
     const cities = [
         {
@@ -79,19 +87,21 @@ const SearchScreen = ({navigation}) => {
                 >
                     <Entypo style={styles.chevron2} name="chevron-thin-left" size={28} color="black" />
                 </TouchableOpacity>
-                <Text style={styles.text}>عقار للبيع</Text>
+                <Text style={styles.text}>{choice ? "عقار للبيع" : "عقار للايجار"}</Text>
                 <View style={styles.searchBar}>
-                    <Feather name="search" style={styles.icon}/>
-                    <TextInput 
-                        style={styles.search}
-                        placeholder="ابحث"
-                        onChangeText={(search) => {
-                            setSearch(search)
-                            setCities(search)
-                            }
+                <Feather name="search" style={styles.icon}/>
+                <TextInput 
+                    style={styles.search}
+                    placeholder="ابحث"
+                    autoFocus={false}
+                    ref={(input) => {setFocus(input)}}
+                    onChangeText={(search) => {
+                        setSearch(search)
+                        setCities(search)
                         }
-                        value={search}
-                    />
+                    }
+                    value={search}
+                />
                 </View>
             </View>
 
@@ -119,7 +129,9 @@ const styles = StyleSheet.create({
     },
     header: {
         height: 155,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        borderBottomWidth: 1,
+        borderBottomColor: 'lightgrey'
     },  
     top: {
         height: 50,
@@ -151,6 +163,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginHorizontal: 10,
         fontWeight: '600',
+        textAlign: 'right'
     },
     icon: {
         fontSize: 30,
@@ -181,7 +194,7 @@ const styles = StyleSheet.create({
 });
 
 SearchScreen.navigationOptions = {
-    headerShown: false
+    headerShown: false,
 };
 
 export default SearchScreen;

@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, TextInput} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Entypo } from '@expo/vector-icons';
-import { Input } from 'react-native-elements';
 
 const LogScreen = ({navigation}) => {
 
@@ -15,20 +14,21 @@ const LogScreen = ({navigation}) => {
 
             <View style={styles.header}>
                 <TouchableOpacity 
-                    style={styles.top}
+                    style={styles.back}
                     onPress={() => {navigation.goBack()}}
                 >
                     <Entypo style={styles.chevron} name="chevron-thin-left" size={28} color="black" />
-                    <Text style={styles.text3}> مرحبا </Text>
-                    
                 </TouchableOpacity>
+                <View style={styles.toprow}>
+                    <Text style={styles.text3}>{choice ? "مرحبا بعودتك" : "مرحبا"}</Text>
+                </View>
                 <View style={styles.mainbox}>
                 <TouchableOpacity 
                     style={choice ? styles.boxes : styles.boxes2}
                     disabled={!choice}
                     onPress={() => {setChoice(false)}}
                 >
-                    <Text style={choice ? styles.text : styles.text2}>تسجيل حساب</Text>
+                    <Text style={choice ? styles.text : styles.text2}>تسجيل حساب جديد</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={!choice ? styles.boxes : styles.boxes2}
@@ -42,15 +42,40 @@ const LogScreen = ({navigation}) => {
 
             <View style={styles.bottomContainer}>
 
-                <Input label="Email" autoCapitalize="none" autoCorrect={false} value={email} onChangeText={(value) => setEmail(value)}/>
 
-                <Input label="Password" secureTextEntry={true} autoCapitalize="none" autoCorrect={false} value={password} onChangeText={(value) => setPassword(value)}/>
+                <Text style={styles.text5}>الايميل</Text>
+                <View style={styles.inputbox}>
+
+                    <TextInput 
+                        style={styles.input}
+                        placeholder='الايميل'
+                        value={email}
+                        onChangeText={(value) => setEmail(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        keyboardType="email-address"
+                    />
+                </View>
+
+                <Text style={styles.text5}>كلمة السر</Text>
+                <View style={styles.inputbox}>
+
+                    <TextInput 
+                        style={styles.input}
+                        placeholder='كلمة السر'
+                        value={password}
+                        onChangeText={(value) => setPassword(value)}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        secureTextEntry={true}
+                    />
+                </View>
 
                 <TouchableOpacity
                 style={styles.btn}
                 onPress={() => {navigation.navigate('Log')}}
                 >
-                    <Text style={styles.text4}>تسجيل الدخول</Text>
+                    <Text style={styles.text4}>{choice ? "تسجيل الدخول" : "تسجيل حساب جديد"}</Text>
                 </TouchableOpacity>
             </View>
 
@@ -64,18 +89,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white'
     },
-    header: {
-        backgroundColor: 'white'
+    back: {
+        alignSelf: 'flex-start',
     },  
-    top: {
-        flexDirection: 'row',
-        marginTop: 5
+    header: {
+        backgroundColor: 'white',
     },  
     bottomContainer: {
-        alignItems: 'center',
-        paddingTop: 100,
+        paddingTop: 80,
         flex: 1,
-        backgroundColor: '#F0EEEE'
+        backgroundColor: 'white'
     },
     text3: {
         flex: 1,
@@ -83,7 +106,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 30,
         top: 3,
-        right: 25,
         fontWeight: "700"
     },  
     chevron: {
@@ -110,10 +132,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     mainbox:{
-        marginTop: 20,
+        marginTop: 15,
         height: 45,
         flexDirection: 'row',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        borderBottomWidth: 1,
+        borderBottomColor: 'lightgrey'
     },
     boxes: {
         // borderBottomWidth: 2,
@@ -124,17 +148,43 @@ const styles = StyleSheet.create({
     btn: {
         marginTop: 20,
         backgroundColor: '#4CAF50',
-        width: 300,
         height: 45,
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 40,
+        borderRadius: 10,
+        marginHorizontal: 10
     },
     text4: {
         fontSize: 20,
         color: 'white',
-        fontWeight: '400'
+        fontWeight: '600'
     },
+    inputbox: {
+        borderColor: 'grey',
+        borderRadius: 10,
+        marginHorizontal: 10,
+        borderWidth: 2,
+        flexDirection: 'row',
+        height: 50,
+        paddingHorizontal: 15,
+        marginBottom: 15
+    },
+    text5: {
+        fontSize: 22,
+        fontWeight: '700',
+        marginHorizontal: 20,
+        marginVertical: 7
+    },
+    input: {
+        flex: 1,
+        fontSize: 18,
+        textAlign: 'right'
+    },
+    toprow: {
+        flexDirection: 'row',
+        // bottom: 35
+    }
 });
 
 LogScreen.navigationOptions = {

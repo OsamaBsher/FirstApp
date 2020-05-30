@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: "center",
         justifyContent: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: 'lightgrey'
     },
     headerText: {
         fontSize: 35,
